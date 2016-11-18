@@ -9,5 +9,6 @@ public class ExerciseDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise_detail);
+        setTitle(R.string.exercise_detail);
     }
 }
