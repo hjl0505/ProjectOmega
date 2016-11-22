@@ -18,8 +18,8 @@
     <threadsafe>true</threadsafe>
     <use-google-connector-j>true</use-google-connector-j>
     <system-properties>
-        <property name="ae-cloudsql.cloudsql-database-url" value="jdbc:google:mysql://projectomega-149302:us-central1:testdb/test?user=root&amp;password=css490" />
-        <property name="ae-cloudsql.local-database-url" value="jdbc:mysql://localhost/testdb?user=hyunniebucket&amp;css490=password&amp;useSSL=false" />
+        <property name="ae-cloudsql.cloudsql-database-url" value="jdbc:google:mysql://projectomega-149302:us-central1:exercisedb/exerciseDB?user=root&amp;password=css490" />
+        <property name="ae-cloudsql.local-database-url" value="jdbc:mysql://localhost/testdb?user=root&amp;css490=password&amp;useSSL=false" />
     </system-properties>
 </appengine-web-app>
     <!-- [END config] -->

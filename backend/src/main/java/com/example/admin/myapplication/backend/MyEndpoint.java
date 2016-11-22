@@ -25,9 +25,7 @@ import java.sql.ResultSet;
 import javax.inject.Named;
 import javax.servlet.ServletException;
 
-/**
- * An endpoint class we are exposing
- */
+// An endpoint class we are exposing
 @Api(
         name = "myApi",
         version = "v1",
@@ -38,27 +36,16 @@ import javax.servlet.ServletException;
         )
 )
 public class MyEndpoint {
+    @ApiMethod(name = "getExerciseList")
+    public ExerciseListData getExerciseList (@Named("bpList") String[] bpList) throws ServletException {
+        ExerciseListData exerciseList = new ExerciseListData();
 
-    /**
-     * A simple endpoint method that takes a name and says Hi back
-     */
-
-    @ApiMethod(name = "sayHi")
-    public MyBean sayHi(@Named("name") String name) throws ServletException {
-        MyBean response = new MyBean();
-        //response.setData("Hi, " + name);
-
-        final String selectSql = "SELECT * FROM exercise";
+        final String selectSql = listQueryHelper(bpList);
 
         String url;
-        if (System
-                .getProperty("com.google.appengine.runtime.version").startsWith("Google App Engine/")) {
-            // Check the System properties to determine if we are running on appengine or not
-            // Google App Engine sets a few system properties that will reliably be present on a remote
-            // instance.
+        if (System.getProperty("com.google.appengine.runtime.version").startsWith("Google App Engine/")) {
             url = System.getProperty("ae-cloudsql.cloudsql-database-url");
             try {
-                // Load the class that provides the new "jdbc:google:mysql://" prefix.
                 Class.forName("com.mysql.jdbc.GoogleDriver");
             } catch (ClassNotFoundException e) {
                 throw new ServletException("Error loading Google JDBC Driver", e);
@@ -72,25 +59,75 @@ public class MyEndpoint {
             Connection conn = DriverManager.getConnection(url);
             ResultSet rs = conn.prepareStatement(selectSql).executeQuery();
             while (rs.next()) {
-                String exerciseName = rs.getString("exerciseName");
-                String bodypartName = rs.getString("bodypartName");
-                int exerciseID = rs.getInt("exerciseID");
-
-                response.setData(exerciseName,bodypartName,exerciseID);
+                String exerciseName = rs.getString("ExerciseName");
+                exerciseList.setData(exerciseName);
             }
 
         } catch (SQLException e) {
             throw new ServletException("SQL error", e);
         }
-        return response;
+        return exerciseList;
     }
 
-  /*  @ApiMethod(name = "sayHi")
-    public MyBean sayHi(@Named("name") String name) {
-        MyBean response = new MyBean();
-        response.setData("Hi, " + name);
+    private String listQueryHelper(String[] bpList) {
+        String query = "SELECT DISTINCT ExerciseName FROM Exercise INNER JOIN BodyPart ON Exercise.BodyPartID = BodyPart.BodyPartID ";
+        query += "WHERE BodyPart.name = '" + bpList[0] + "'";
 
-        return response;
-    }*/
+        // add more bodyparts to the query
+        for (int i = 1; i < bpList.length; i++) {
+            query += "OR BodyPart.name = '" + bpList[i]+ "'";
+        }
+        return query;
+    }
+
+    @ApiMethod(name = "getExerciseDetail")
+    public ExerciseDetailData getExerciseDetail (@Named("exerciseName") String exerciseName) throws ServletException {
+        ExerciseDetailData detail = new ExerciseDetailData();
+
+        final String selectSql = "SELECT  Ex.ExerciseName, Ex.Difficulty, Ex.Warning, Ex.Link, Ex.Description, Ex.Direction, Equipment.EquipmentName, bodypart.name AS BodyPart, injury.name FROM Exercise Ex " +
+                "JOIN Equipment ON Equipment.EquipmentID = Ex.EquipmentID " +
+                "JOIN BodyPart bodypart ON bodypart.BodyPartID = Ex.BodyPartID " +
+                "LEFT JOIN BodyPart injury ON injury.BodyPartID = Ex.InjuryID " +
+                "WHERE Ex.ExerciseName = '" + exerciseName + "'";
+
+        String url;
+        if (System.getProperty("com.google.appengine.runtime.version").startsWith("Google App Engine/")) {
+            url = System.getProperty("ae-cloudsql.cloudsql-database-url");
+            try {
+                Class.forName("com.mysql.jdbc.GoogleDriver");
+            } catch (ClassNotFoundException e) {
+                throw new ServletException("Error loading Google JDBC Driver", e);
+            }
+        } else {
+            // Set the url with the local MySQL database connection url when running locally
+            url = System.getProperty("ae-cloudsql.local-database-url");
+        }
+
+        try {
+            Connection conn = DriverManager.getConnection(url);
+            ResultSet rs = conn.prepareStatement(selectSql).executeQuery();
+            while (rs.next()) {
+                String exName = rs.getString("ExerciseName");
+                int difficulty = rs.getInt("Difficulty");
+                String exWarning = rs.getString("Warning");
+                String exLink = rs.getString("Link");
+                String description = rs.getString("Description");
+                String direction = rs.getString("Direction");
+                String equipName = rs.getString("EquipmentName");
+                String bodyPart = rs.getString("BodyPart");
+                String injury = rs.getString("name");
+
+                /////////////////////////////
+                System.out.println("MyEndpoint getExerciseDetail GOT DATA");
+                /////////////////////////////
+
+                detail.setData(exName, difficulty, exWarning, exLink, description, direction, equipName, bodyPart, injury);
+            }
+
+        } catch (SQLException e) {
+            throw new ServletException("SQL error", e);
+        }
+        return detail;
+    }
 }
 
