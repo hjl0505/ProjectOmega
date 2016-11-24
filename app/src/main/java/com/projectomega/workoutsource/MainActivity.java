@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
     private boolean[] IsSelected;
     @Override
@@ -19,6 +21,28 @@ public class MainActivity extends AppCompatActivity {
 
     public void queryWorkout(View view) {
         Intent intent = new Intent(this, ExerciseList.class);
+        ArrayList<String> body_part_list = new ArrayList<String>();
+        // check the boolean body part array and add the selected body part into a body part array list
+        for (int i = 0; i < IsSelected.length; i++)
+        {
+            if (IsSelected[i])
+              switch(i)
+              {
+                  case 0: body_part_list.add("chest");
+                      break;
+                  case 1: body_part_list.add("biceps");
+                      break;
+                  case 2: body_part_list.add("legs");
+                      break;
+                  case 3: body_part_list.add("shoulders");
+                      break;
+                  case 4: body_part_list.add("back");
+                      break;
+                  case 5: body_part_list.add("triceps");
+                      break;
+              }
+        }
+        intent.putStringArrayListExtra("body_part_list", body_part_list);
         startActivity(intent);
     }
 
