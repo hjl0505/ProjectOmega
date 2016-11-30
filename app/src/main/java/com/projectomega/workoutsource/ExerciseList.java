@@ -25,7 +25,7 @@ public class ExerciseList extends AppCompatActivity {
         ///////////////////////
         ///////////////////////
         bpList = new ArrayList<String>();
-        bpList.add("chest");
+        bpList = getIntent().getStringArrayListExtra("body_part_list");
         /////////////////////////
         ////////////////////////
 
@@ -44,10 +44,9 @@ public class ExerciseList extends AppCompatActivity {
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?>adapter, View v, int position, long id){
-                Object item = adapter.getItemAtPosition(position);
-
+                String item = (String) adapter.getItemAtPosition(position);
                 Intent intent = new Intent(ExerciseList.this,ExerciseDetail.class);
-                //based on item add info to intent
+                intent.putExtra("body_part", item);
                 startActivity(intent);
             }
         });
