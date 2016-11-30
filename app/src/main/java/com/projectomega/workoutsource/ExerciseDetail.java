@@ -38,17 +38,16 @@ public class ExerciseDetail extends AppCompatActivity {
         setContentView(R.layout.activity_exercise_detail);
         setTitle(R.string.exercise_detail);
         TextView t = (TextView)findViewById(R.id.nameTextView);
-        if (data[0] instanceof String) // name
+        if (data[0] != null && data[0] instanceof String) // name
             t.setText(data[0].toString());
         TextView t1 = (TextView)findViewById(R.id.difficultyTextView);
-        if (data[1] instanceof BigDecimal) // difficulty
+        if (data[1] != null && data[1] instanceof BigDecimal) // difficulty
             t1.setText(data[1].toString());
         TextView t2 = (TextView)findViewById(R.id.descriptionTextView);
-        if (data[4] instanceof String) // description
+        if (data[4] != null && data[4] instanceof String) // description
             t2.setText(data[4].toString());
         System.out.println(data[0]);
         System.out.println(data[1]);
-        System.out.println(data[1].getClass());
         System.out.println(data[2]);
         System.out.println(data[3]);
         System.out.println(data[4]);

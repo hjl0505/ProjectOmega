@@ -30,15 +30,15 @@ public class MainActivity extends AppCompatActivity {
               {
                   case 0: body_part_list.add("chest");
                       break;
-                  case 1: body_part_list.add("biceps");
+                  case 1: body_part_list.add("bicep");
                       break;
-                  case 2: body_part_list.add("legs");
+                  case 2: body_part_list.add("leg");
                       break;
-                  case 3: body_part_list.add("shoulders");
+                  case 3: body_part_list.add("shoulder");
                       break;
                   case 4: body_part_list.add("back");
                       break;
-                  case 5: body_part_list.add("triceps");
+                  case 5: body_part_list.add("tricep");
                       break;
               }
         }
@@ -51,28 +51,42 @@ public class MainActivity extends AppCompatActivity {
         {
             case R.id.button :
                 IsSelected[0] = !IsSelected[0]; // Chest
+                setBackgroundColor(view, IsSelected[0]);
                 Toast.makeText(MainActivity.this,Boolean.toString(IsSelected[0]), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.button2 :
                 IsSelected[1] = !IsSelected[1]; // Biceps
+                setBackgroundColor(view, IsSelected[1]);
                 Toast.makeText(MainActivity.this,Boolean.toString(IsSelected[1]), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.button3 :
                 IsSelected[2] = !IsSelected[2]; // Legs
+                setBackgroundColor(view, IsSelected[2]);
                 Toast.makeText(MainActivity.this,Boolean.toString(IsSelected[2]), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.button4 :
                 IsSelected[3] = !IsSelected[3]; // Shoulders
+                setBackgroundColor(view, IsSelected[3]);
                 Toast.makeText(MainActivity.this,Boolean.toString(IsSelected[3]), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.button5 :
                 IsSelected[4] = !IsSelected[4]; // Back
+                setBackgroundColor(view, IsSelected[4]);
                 Toast.makeText(MainActivity.this,Boolean.toString(IsSelected[4]), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.button6 :
                 IsSelected[5] = !IsSelected[5]; // Triceps
+                setBackgroundColor(view, IsSelected[5]);
                 Toast.makeText(MainActivity.this,Boolean.toString(IsSelected[5]), Toast.LENGTH_SHORT).show();
                 break;
         }
+
+    }
+    public void setBackgroundColor(View view, boolean isSelected)
+    {
+        if (isSelected)
+            view.setBackgroundColor(0xFFE57373);
+        else
+            view.setBackgroundColor(0xFFE0E0E0);
     }
 }

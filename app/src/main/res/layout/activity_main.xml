@@ -15,6 +15,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:background="#E0E0E0"
         android:onClick="selectButton"
         />
 
@@ -27,6 +28,7 @@
         android:layout_below="@+id/button"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:background="#E0E0E0"
         android:onClick="selectButton"/>
 
     <Button
@@ -40,6 +42,7 @@
         android:id="@+id/button3"
         android:layout_alignRight="@+id/button2"
         android:layout_alignEnd="@+id/button2"
+        android:background="#E0E0E0"
         android:onClick="selectButton"/>
 
     <Button
@@ -51,6 +54,7 @@
         android:layout_alignBottom="@+id/button2"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
+        android:background="#E0E0E0"
         android:onClick="selectButton"/>
 
     <Button
@@ -61,6 +65,7 @@
         android:layout_alignTop="@+id/button"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
+        android:background="#E0E0E0"
         android:onClick="selectButton"/>
 
     <Button
@@ -71,6 +76,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/button6"
+        android:background="#E0E0E0"
         android:onClick="selectButton"/>
 
     <Button
