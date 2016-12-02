@@ -75,8 +75,10 @@ public class MyEndpoint {
 
         // add more bodyparts to the query
         for (int i = 1; i < bpList.length; i++) {
-            query += "OR BodyPart.name = '" + bpList[i]+ "'";
+            query += " OR BodyPart.name = '" + bpList[i]+ "'";
         }
+
+        System.out.println(query);
         return query;
     }
 

@@ -36,9 +36,9 @@ public class MainActivity extends AppCompatActivity {
                       break;
                   case 3: body_part_list.add("shoulder");
                       break;
-                  case 4: body_part_list.add("back");
+                  case 4: body_part_list.add("tricep");
                       break;
-                  case 5: body_part_list.add("tricep");
+                  case 5: body_part_list.add("back");
                       break;
               }
         }
