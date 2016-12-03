@@ -70,12 +70,12 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this,Boolean.toString(IsSelected[3]), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.button5 :
-                IsSelected[4] = !IsSelected[4]; // Back
+                IsSelected[4] = !IsSelected[4]; // Triceps
                 setBackgroundColor(view, IsSelected[4]);
                 Toast.makeText(MainActivity.this,Boolean.toString(IsSelected[4]), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.button6 :
-                IsSelected[5] = !IsSelected[5]; // Triceps
+                IsSelected[5] = !IsSelected[5]; // Back
                 setBackgroundColor(view, IsSelected[5]);
                 Toast.makeText(MainActivity.this,Boolean.toString(IsSelected[5]), Toast.LENGTH_SHORT).show();
                 break;
