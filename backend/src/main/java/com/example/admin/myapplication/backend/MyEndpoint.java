@@ -38,7 +38,7 @@ import javax.servlet.ServletException;
 )
 public class MyEndpoint {
     @ApiMethod(name = "getExerciseList")
-    public ExerciseListData getExerciseList (@Named("bpList") List<String> bpList) throws ServletException {
+    public ExerciseListData getExerciseList (@Named("bpList") String[] bpList) throws ServletException {
         ExerciseListData exerciseList = new ExerciseListData();
 
         final String selectSql = listQueryHelper(bpList);
@@ -70,13 +70,17 @@ public class MyEndpoint {
         return exerciseList;
     }
 
-    private String listQueryHelper(List<String> bpList) {
+    private String listQueryHelper(String[] bpList) {
         String query = "SELECT DISTINCT ExerciseName FROM Exercise INNER JOIN BodyPart ON Exercise.BodyPartID = BodyPart.BodyPartID ";
-        query += "WHERE BodyPart.name = '" + bpList.get(0) + "'";
+
+        String temp[] = bpList[0].split(",");
+
+        // add first body part to query
+        query += "WHERE BodyPart.name = '" + temp[0] + "'";
 
         // add more bodyparts to the query
-        for (int i = 1; i < bpList.size(); i++) {
-            query += " OR BodyPart.name = '" + bpList.get(i)+ "'";
+        for (int i = 1; i < temp.length; i++) {
+            query += " OR BodyPart.name = '" + temp[i]+ "'";
         }
 
         System.out.println(query);
