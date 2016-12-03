@@ -29,6 +29,8 @@ public class ExerciseList extends AppCompatActivity {
         /////////////////////////
         ////////////////////////
 
+        System.out.println(bpList);
+
         queryExercises(bpList);
         super.onCreate(savedInstanceState);
     }
