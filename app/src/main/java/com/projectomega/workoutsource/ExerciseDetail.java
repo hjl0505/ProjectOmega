@@ -7,17 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
-import android.widget.Switch;
 import android.widget.TextView;
-
-import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class ExerciseDetail extends AppCompatActivity {
     public String exerciseName = "";
@@ -48,6 +41,13 @@ public class ExerciseDetail extends AppCompatActivity {
 
         new DownloadImageTask((ImageView) findViewById(R.id.workoutImageView))
                 .execute(data[3].toString());
+
+
+
+        System.out.println("data size " + data.length);
+        System.out.println("data[0] = " + data[0].toString());
+
+
 
         TextView t = null;
         for (int i = 0; i < data.length && data != null; i++)

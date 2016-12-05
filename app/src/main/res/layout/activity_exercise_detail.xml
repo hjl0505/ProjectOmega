@@ -12,25 +12,6 @@
     tools:context="com.projectomega.workoutsource.ExerciseDetail">
 
     <TextView
-        android:text="nameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/nameTextView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:text="descriptionTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="160dp"
-        android:id="@+id/descriptionTextView"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
         android:text="difficultyTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,45 +22,18 @@
         android:layout_marginRight="52dp"
         android:layout_marginEnd="52dp" />
 
-    <TextView
-        android:text="WarningTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/warningTextView"
-        android:layout_centerVertical="true" />
-
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         app:srcCompat="@mipmap/ic_launcher"
         android:id="@+id/workoutImageView"
+        android:layout_width="match_parent"
+        android:scaleType="fitXY"
         android:layout_below="@+id/nameTextView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="33dp"
-        android:layout_above="@+id/warningTextView"
-        android:layout_toLeftOf="@+id/difficultyTextView"
-        android:layout_toStartOf="@+id/difficultyTextView" />
-
-    <TextView
-        android:text="DirectionTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="77dp"
-        android:id="@+id/directionTextView" />
-
-    <TextView
-        android:text="BodyPartsTextViewTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/equipmentsTextView"
-        android:layout_alignLeft="@+id/equipmentsTextView"
-        android:layout_alignStart="@+id/equipmentsTextView"
-        android:layout_marginTop="68dp"
-        android:id="@+id/bodyPartsTextView" />
+        android:layout_toStartOf="@+id/difficultyTextView"
+        android:adjustViewBounds="true"
+        android:layout_height="wrap_content" />
 
     <TextView
         android:text="EquipmentsTextView"
@@ -89,4 +43,88 @@
         android:layout_alignTop="@+id/workoutImageView"
         android:layout_toRightOf="@+id/workoutImageView"
         android:layout_toEndOf="@+id/workoutImageView" />
+
+    <TextView
+        android:text="descriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/descriptionTextView"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="nameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/nameTextView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="BodyPartsTextViewTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bodyPartsTextView"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/equipmentsTextView"
+        android:layout_alignLeft="@+id/warningTextView"
+        android:layout_alignStart="@+id/warningTextView" />
+
+    <TextView
+        android:text="Description: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:textStyle="normal|bold"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Warning: "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        tools:text="Warnings: "
+        android:textStyle="normal|bold"
+        android:layout_marginTop="14dp"
+        android:layout_below="@+id/bodyPartsTextView"
+        android:layout_toRightOf="@+id/workoutImageView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="WarningTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/warningTextView"
+        android:layout_above="@+id/textView3"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/workoutImageView"
+        android:layout_toEndOf="@+id/workoutImageView" />
+
+    <TextView
+        android:text="Directions:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:textStyle="normal|bold"
+        android:layout_above="@+id/directionTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="DirectionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="55dp"
+        android:id="@+id/directionTextView"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>
