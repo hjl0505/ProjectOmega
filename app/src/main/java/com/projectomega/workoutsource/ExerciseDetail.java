@@ -39,15 +39,10 @@ public class ExerciseDetail extends AppCompatActivity {
         setContentView(R.layout.activity_exercise_detail);
         setTitle(R.string.exercise_detail);
 
-        new DownloadImageTask((ImageView) findViewById(R.id.workoutImageView))
-                .execute(data[3].toString());
-
-
-
-        System.out.println("data size " + data.length);
-        System.out.println("data[0] = " + data[0].toString());
-
-
+        if (data != null)
+            if (data[3] != null)
+                new DownloadImageTask((ImageView) findViewById(R.id.workoutImageView))
+                    .execute(data[3].toString());
 
         TextView t = null;
         for (int i = 0; i < data.length && data != null; i++)

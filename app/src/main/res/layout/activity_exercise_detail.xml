@@ -23,9 +23,8 @@
         android:layout_marginEnd="52dp" />
 
     <ImageView
-        app:srcCompat="@mipmap/ic_launcher"
         android:id="@+id/workoutImageView"
-        android:layout_width="match_parent"
+        android:layout_width="28dp"
         android:scaleType="fitXY"
         android:layout_below="@+id/nameTextView"
         android:layout_alignParentLeft="true"
@@ -33,7 +32,7 @@
         android:layout_marginTop="33dp"
         android:layout_toStartOf="@+id/difficultyTextView"
         android:adjustViewBounds="true"
-        android:layout_height="wrap_content" />
+        android:layout_height="180dp" />
 
     <TextView
         android:text="EquipmentsTextView"
@@ -60,7 +59,10 @@
         android:id="@+id/nameTextView"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textSize="24sp"
+        android:textColor="@color/colorPrimary"
+        />
 
     <TextView
         android:text="BodyPartsTextViewTextView"
